@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c37bd977-e500-477b-b985-d827036571a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FYP_Version_03/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FYP_Version_03/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -284,7 +285,8 @@
       <workItem from="1594542199561" duration="2544000" />
       <workItem from="1594544886434" duration="27975000" />
       <workItem from="1594575575440" duration="28921000" />
-      <workItem from="1594903733965" duration="1582000" />
+      <workItem from="1594903733965" duration="3678000" />
+      <workItem from="1594925053139" duration="48000" />
     </task>
     <servers />
   </component>
@@ -296,7 +298,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
