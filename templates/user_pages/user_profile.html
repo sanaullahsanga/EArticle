@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>E-Article | User</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% include 'admin_pages/apply_to_all_admin_pages/Head.html' %}
+    <style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+.profilecard{
+    margin-top: 10px;
+}
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+  </head>
+  <body>
+    <!-- Side Navbar -->
+
+
+    {% include 'user_pages/apply_to_all_user_pages/side_bar.html' %}
+    <div class="page">
+      <!-- navbar-->
+      <header class="header">
+    {% include 'admin_pages/apply_to_all_admin_pages/upper_navbar.html' %}
+      </header>
+      <!-- Breadcrumb-->
+      <div class="breadcrumb-holder">
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'users' %}">Home</a></li>
+            <li class="breadcrumb-item active">Profile</li>
+          </ul>
+        </div>
+      </div>
+      <section>
+        <div class="container-fluid">
+            <br><br>
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <div class="panel panel-default">
+
+<div class="card">
+ <p align="center" class="profilecard"> <img src="{% static 'adminuserfrontend/img/profile.png'  %}" alt="John" style="width:60%" ></p>
+    <br>
+
+  <h1>{{user_name}}</h1>
+  <p class="title">{{user_type}}</p>
+  <p>{{user_email}}</p>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+<br><br>
+      <footer class="main-footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>FAST-NU &copy; 2020</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p>Design by <a href="https://bootstrapious.com/p/bootstrap-4-dashboard" class="external">FASTIANS</a></p>
+              <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- JavaScript files-->
+   {% include 'admin_pages/apply_to_all_admin_pages/javascript.html' %}
+  </body>
+</html>

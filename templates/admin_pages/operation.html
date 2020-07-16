@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <title>E-Article | Admin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'admin_pages/apply_to_all_admin_pages/Head.html' %}
+
+  </head>
+  <body>
+    <!-- Side Navbar -->
+
+    {% include 'admin_pages/apply_to_all_admin_pages/side_bar.html' %}
+    <div class="page">
+
+      <!-- navbar-->
+      <header class="header">
+       {% include 'admin_pages/apply_to_all_admin_pages/upper_navbar.html' %}
+      </header>
+      <!-- Breadcrumb-->
+      <div class="breadcrumb-holder">
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'adminpage'%}">Home</a></li>
+            <li class="breadcrumb-item active">Operation</li>
+          </ul>
+        </div>
+      </div>
+      <section>
+        <div class="container-fluid">
+          <!-- Page Header-->
+          <header>
+            <h1 class="h3 display">Operations</h1>
+          </header>
+          <div class="wrapper">
+
+    <div id="content">
+        <div class="select2-container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <ul class="navbar-nav mr-auto">
+                        <li>
+                            <h1 class="editContent" style="outline: none; cursor: inherit; color: blueviolet"> Crawl Articles</h1><br><br>
+                             <a class="nav-link" href="{% url 'crawler' %}">Crawl Article
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <table class="col-md-8 border table table-striped table-hover table-users">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Job</th>
+                    </tr>
+                </thead>
+
+                    {% for c in  crawl %}
+                <tr>
+                    <td>{{c.email}}</td>
+                    <td>{{c.date}}</td>
+                    <td>{{c.time}}</td>
+                    <td>{{c.job}}</td>
+                </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+      </section>
+    <footer class="main-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>FAST-NU &copy; 2020</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <p>Design by <a href="https://bootstrapious.com/p/bootstrap-4-dashboard" class="external">FASTIANS</a></p>
+              <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+    <!-- JavaScript files-->
+    {% include 'admin_pages/apply_to_all_admin_pages/javascript.html' %}
+</body>
+</html>

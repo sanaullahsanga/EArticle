@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>E-Article | Admin</title>
+    <meta name="description" content="">
+    {% include 'admin_pages/apply_to_all_admin_pages/Head.html' %}
+    <style>
+        /* hide the blue outline */
+        .form-control:focus {
+        outline: 0 !important;
+        border-color: initial;
+        box-shadow: none;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'articles/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/jquery.timepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'articles/css/style2.css' %}">
+    <style>
+         div p{
+            text-align: justify;
+            font-family: "Times New Roman", Times, serif;
+        }
+        h3{
+            color: #2d9f50;
+            font-family: "Times New Roman", Times, serif;
+            font-size: x-large;
+        }
+    </style>
+</head>
+<body>
+{% include 'user_pages/apply_to_all_user_pages/side_bar.html' %}
+      <!-- navbar-->
+<div class="page">
+    <header class="header">
+        {% include 'admin_pages/apply_to_all_admin_pages/upper_navbar.html' %}
+    </header>
+    <div class="breadcrumb-holder">
+        <div class="container-fluid">
+            <form class="form-inline" action="{% url 'searcharticle1' %}" method="post">
+                        {% csrf_token %}
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'users' %}">Home</a></li>
+                    <li class="breadcrumb-item active-current">Articles</li>
+                </ul>
+        <br>
+                <div class="dropdown">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <select class="btn btn-secondary dropdown-toggle" name="dropdown" id="search"  required>
+                        <div  aria-labelledby="dropdownMenuButton" aria-required>
+                            <option name="dropdown" value="">Select by Search</option>
+                            <option  name="dropdown" value="Entertainment">Category</option>
+                            <option  name="dropdown" value="Title">Article Name</option>
+                            <option  name="dropdown" value="content">Topic</option>
+                            <option name="dropdown" value="Author">Author</option>
+                        </div></select>
+                </div>
+                <div style="margin-left: auto" class="input-group col-lg-3 col-md-4 col-sm-6 col-xs-s12">
+                    <input class="form-control py-2 border-right-0 border" name="search" type="search" placeholder="Search" id="example-search-input" required>
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="colorlib-page">
+        <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+        <div id="colorlib-main">
+            <section class="ftco-section ftco-no-pt ftco-no-pb">
+                <div class="container">
+                    <div class="row d-flex">
+                        <div class="col-xl-8 py-5 px-md-5">
+                            <div class="row pt-md-4">
+                                <div class="col-md-12">
+									<div class="blog-entry ftco-animate d-md-flex">
+										<div class="text text-2 pl-md-4">
+                                                {% if data %}
+                                                    {% for a in data %}
+                                                        <h3 class="mb-2">{{a.name}}</h3>
+                                                        <div class="meta-wrap">
+                                                            <p class="meta">
+                                                                <span> <i class="fa fa-calendar mr-2" aria-hidden="true" ></i>{{a.pubdate}}&ensp;&ensp;</span>
+                                                                <span><i class=" fa fa-list-alt  mr-2"></i>{{a.category}}&ensp;&ensp;</span>
+                                                                <span><i class="fa fa-font  mr-2"></i>{{a.author}}&ensp;&ensp;</span>
+                                                            </p>
+                                                        </div>
+                                                        <p class="mb-4 justify-content">{{a.content}}</p>
+                                                    {% endfor %}
+                                                {% else %}
+                                                     <p>Welcome!<br>Related Article not found search other one</p>
+                                                {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- END-->
+                        </div>
+                        <div class="col-xl-4 sidebar ftco-animate bg-light pt-5">
+                            <div class="container-fluid">
+                                <form class="form-inline" class="search-form" action="{% url 'search_article_date1' %}" method="post">
+                                    {% csrf_token %}
+                                    <div style="margin-left: 0px" class="sidebar-box pt-md-4 ">
+                                        <input class="form-control py-2 border-right-0 border" name="search" type="date" placeholder="Search" id="example-search-input "required>
+                                        <button class="btn btn-outline-secondary border-left-0 border" type="submit" onclick="{% url 'search_article_date1' %}">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                                <div>
+                                    <br>
+                                    <h3 style=" font-size: xx-large;">Categories</h3><br>
+                                    <ul class="categories">
+                                        {% if entertain %}
+                                            {% if poli %}
+                                                {% if sports %}
+                                                    <li><a href="{% url 'search_article_Ent1' %}">Entertainment <span>({{entertain}})</span></a></li>
+                                                    <li><a href="{% url 'search_article_Pol1' %}">Politics <span>({{ poli }})</span></a></li>
+                                                    <li><a href="{% url 'search_article_Sport1' %}">Sports <span>({{ sports }})</span></a></li>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                {% if auth %}
+                                    <div>
+                                        <h3 style=" font-size: xx-large;">Authors</h3><br>
+                                        <ul class="tagcloud">
+                                            {% for a in auth %}
+                                                <a class="tag-cloud-link">{{ a.0 }}</a>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            </div><!-- END COL -->
+                        </div>
+                    </div>
+                </div><!-- END COLORLIB-MAIN -->
+            </section>
+        </div>
+    </div><!-- END COLORLIB-PAGE -->
+    <footer class="main-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>FAST-NU &copy; 2020</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <p>Design by <a href="https://bootstrapious.com/p/bootstrap-4-dashboard" class="external">FASTIANS</a></p>
+              <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+    <!-- JavaScript files-->
+    {% include 'admin_pages/apply_to_all_admin_pages/javascript.html' %}
+</body>
+</html>

@@ -1,0 +1,108 @@
+    <!DOCTYPE html>
+    {% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <title>E-Article | User</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      {% include 'admin_pages/apply_to_all_admin_pages/Head.html' %}
+
+
+  </head>
+  <body>
+    <!-- Side Navbar -->
+
+            {% include 'user_pages/apply_to_all_user_pages/side_bar.html' %}
+            <div class="page">
+
+
+      <!-- navbar-->
+      <header class="header">
+    {% include 'admin_pages/apply_to_all_admin_pages/upper_navbar.html' %}
+      </header>
+      <!-- Counts Section -->
+      <section class="dashboard-counts section-padding">
+        <div class="container-fluid m-lg-5" >
+          <div class="row">
+            <!-- Count item widget-->
+
+            <!-- Count item widget-->
+            <div class="col-xl-4 col-md-4 col-4">
+              <div class="wrapper count-title d-flex">
+                <div class="icon"><i class="fa fa-newspaper-o" aria-hidden="true"></i></div>
+                <div class="name"><strong class="text-uppercase">Sport Articles</strong>
+                  <div class="count-number">{{countsport}}</div>
+                </div>
+              </div>
+            </div>
+            <!-- Count item widget-->
+            <div class="col-xl-4 col-md-4 col-5">
+              <div class="wrapper count-title d-flex">
+                <div class="icon"><i class="fa fa-newspaper-o" aria-hidden="true"></i></div>
+                <div class="name"><strong class="text-uppercase">Entertainment Articles</strong>
+                  <div class="count-number">{{countentertainment}}</div>
+                </div>
+              </div>
+            </div>
+            <!-- Count item widget-->
+            <div class="col-xl-4 col-md-4 col-6">
+              <div class="wrapper count-title d-flex">
+                <div class="icon"><i class="fa fa-newspaper-o" aria-hidden="true"></i></div>
+                <div class="name"><strong class="text-uppercase">Politics Articles</strong>
+                  <div class="count-number">{{countpolitics}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Header Section-->
+
+      <!-- Statistics Section-->
+      <section class="statistics">
+        <div class="container-fluid">
+          <div class="row d-flex">
+            <div class="col-lg-12">
+              <!-- Income-->
+              <div class="card income text-center">
+                <div class="icon"><i class="icon-line-chart"></i></div>
+                <div class="number">{{ TotalArticles }}</div><strong class="text-primary">Total Articles</strong>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <!-- Updates Section -->
+
+      <footer class="main-footer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <p>FAST-NU &copy; 2020</p>
+            </div>
+            <div class="col-sm-6 text-right">
+              <p>Design by <a href="https://bootstrapious.com/p/bootstrap-4-dashboard" class="external">FASTIANS</a></p>
+              <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- JavaScript files-->
+
+    <script src="{% static 'admin/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'admin/vendor/popper.js/umd/popper.min.js' %}"> </script>
+    <script src="{% static 'admin/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/js/grasp_mobile_progress_circle-1.0.0.min.js' %}"></script>
+    <script src="{% static 'admin/vendor/jquery.cookie/jquery.cookie.js' %}"> </script>
+    <script src="{% static 'admin/vendor/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'admin/vendor/jquery-validation/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'admin/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static 'admin/js/charts-home.js' %}"></script>
+    <!-- Main File-->
+    <script src="{% static 'admin/js/front.js' %}"></script>
+  </body>
+</html>

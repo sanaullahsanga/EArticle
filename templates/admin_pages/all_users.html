@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>E-Article | Admin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'admin_pages/apply_to_all_admin_pages/Head.html' %}
+</head>
+<body>
+    <!-- Side Navbar -->
+    {% if user1 %}
+        {% include 'admin_pages/apply_to_all_admin_pages/side_bar.html' %}
+        <div class="page">
+      <!-- navbar-->
+        <header class="header">
+            {% include 'admin_pages/apply_to_all_admin_pages/upper_navbar.html' %}
+        </header>
+      <!-- Breadcrumb-->
+        <div class="breadcrumb-holder">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'adminpage' %}">Home</a></li>
+                    <li class="breadcrumb-item active">Users</li>
+                </ul>
+            </div>
+        </div>
+        <section>
+        <div class="container-fluid">
+          <!-- Page Header-->
+        <header>
+            <h1 class="h3 display">All Users</h1>
+        </header>
+        <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <i class="fa fa-table"></i> User's Detail</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Type</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for user in user1%}
+                                <tr>
+                                    <td type="text">{{ user.id }}</td>
+                                    <td type="text">{{user.name}}</td>
+                                    <td type="text">{{user.email}}</td>
+                                    <td type="text">{{user.password}}</td>
+                                    <td type="text">{{user.type}}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>there is no User</p>
+    {% endif %}
+    </div>
+    </section>
+    <footer class="main-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>FAST-NU &copy; 2020</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <p>Design by <a href="https://bootstrapious.com/p/bootstrap-4-dashboard" class="external">FASTIANS</a></p>
+              <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions and it helps me to run Bootstrapious. Thank you for understanding :)-->
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+    <!-- JavaScript files-->
+    {% include 'admin_pages/apply_to_all_admin_pages/javascript.html' %}
+</body>
+</html>

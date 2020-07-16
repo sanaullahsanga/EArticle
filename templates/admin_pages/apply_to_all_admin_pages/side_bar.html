@@ -1,0 +1,28 @@
+{% load static %}
+<nav class="side-navbar">
+      <div class="side-navbar-wrapper">
+        <!-- Sidebar Header    -->
+        <div class="sidenav-header d-flex align-items-center justify-content-center">
+          <!-- User Info-->
+          <div class="sidenav-header-inner text-center"><img src="{% static 'adminuserfrontend/img/user.jpg' %}" alt="person" class="img-fluid rounded-circle">
+            <h2 class="h5">{{user_name}}</h2><span>{{user_type}}</span>
+          </div>
+          <!-- Small Brand information, appears on minimized sidebar-->
+          <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>E</strong><strong class="text-primary">A</strong></a></div>
+        </div>
+        <!-- Sidebar Navigation Menus-->
+        <div class="main-menu">
+          <h5 class="sidenav-heading">Main</h5>
+          <ul id="side-main-menu" class="side-menu list-unstyled">
+            <li><a href="{% url 'adminpage' %}"><i class="icon-home"></i>Home</a></li>
+            <li><a href="{% url 'adminprofile' %}"><i class="fa fa-address-card-o" aria-hidden="true"></i> Profile</a></li>
+            <li><a href="{% url 'allusers' %}"> <i class="fa fa-users" aria-hidden="true"></i>Users</a></li>
+            <li><a href="{% url 'register_admin' %}"><i class="fa fa-user-plus" aria-hidden="true"></i>Register Admin</a></li>
+            <li><a href="{% url 'operation' %}"> <i class="fa fa-tasks" aria-hidden="true"></i>Operations</a></li>
+            <li><a href="{% url 'article' %}" > <i class="fa fa-newspaper-o" aria-hidden="true"></i>Articles </a>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
