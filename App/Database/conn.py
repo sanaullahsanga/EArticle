@@ -1,5 +1,5 @@
 import io
-
+import pandas as pd
 import pyodbc
 class connection:
     def __int__(self):
@@ -49,6 +49,53 @@ class connection:
         #cursor.execute(history)
         #cursor.execute(crawler)
         conn.commit()
+    def insert_article_to_db(self):
+        conn = self.connection_to_database()
+        Author = []
+        Title = []
+        datesss = []
+        category = []
+        content = []
+
+        dataset = pd.read_csv(
+            r'C:\Users\Sanau\PycharmProjects\FYP_Version_04\model_train\classification\categorize.txt',
+            names=['Author', 'Title', 'PubDate', 'content', 'Entertainment']
+            )
+        number = 0
+        for i in dataset.Entertainment:
+            if i == "Entertainment":
+                Author.append(dataset.Author[number])
+                Title.append(dataset.Title[number])
+                datesss.append(dataset.PubDate[number])
+                category.append(dataset.Entertainment[number])
+                content.append(dataset.content[number])
+
+            number += 1
+        number = 0
+        for i in dataset.Entertainment:
+            if i == "Politics":
+                Author.append(dataset.Author[number])
+                Title.append(dataset.Title[number])
+                datesss.append(dataset.PubDate[number])
+                category.append(dataset.Entertainment[number])
+                content.append(dataset.content[number])
+            number += 1
+        number = 0
+
+        for i in dataset['Entertainment']:
+            if i == "Sports":
+                Author.append(dataset['Author'][number])
+                Title.append(dataset['Title'][number])
+                datesss.append(dataset['PubDate'][number])
+                category.append(dataset['Entertainment'][number])
+                content.append(dataset['content'][number])
+            number += 1
+
+        print("Inserting Articles to database")
+        for t,a,d,c,cont in zip(Title,Author,datesss,category,content):
+            sql = "insert into article values ('" + t + "','" + a + "','"+d+"','" + c + "','" +cont + "')"
+            cursor=conn.cursor()
+            cursor.execute(sql)
     def check_user(self):
         art="From Sushant Singh Rajput’s suicide to Deepika Padukone’s"
         abc=art.replace("'s", '')

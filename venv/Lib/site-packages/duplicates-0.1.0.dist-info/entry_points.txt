@@ -1,0 +1,3 @@
+[console_scripts]
+duplicates = duplicates.__main__:main
+

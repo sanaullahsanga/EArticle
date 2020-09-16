@@ -8,6 +8,7 @@ from nltk.tokenize.treebank import TreebankWordDetokenizer
 from App.Database.conn import connection
 from model_train.Preprocessing.preprocesse import CleanData
 from model_train.classification.classification import predict
+from model_train.crawling.process import Crawler
 from model_train.recommend.recommend_cont import recommend
 from model_train.recommend.recommend import MyClass
 from model_train.crawling.entertainment import ENT
@@ -542,26 +543,8 @@ def operation(request):
         return render(request, 'main_pages/login.html')
 def crawler(request):
     if request.session.has_key('loged'):
-        print("I am crawler")
-        print("Crawling Start")
-        # Crawling data from ENT
-        obj = ENT()
-        myurl = 'https://www.bollywoodlife.com/page/1/'
-        obj.Crawl(myurl)
-        obj.cont()
-        obj.save_to_txt_file()
-        # Crawling data from SPT
-        obj1 = SPT()
-        myurl = 'https://www.pakistantoday.com.pk/sports/'
-        obj1.Crawl(myurl)
-        obj1.cont()
-        obj1.save_to_txt_file()
-        # Crawling data from POLI
-        obj2 = POLI()
-        myurl = 'https://www.pakistantoday.com.pk/columns/'
-        obj2.Crawl(myurl)
-        obj2.cont()
-        obj2.save_to_txt_file()
+        object = Crawler()
+        object.crawling()
         print("Preprocessing Start")
         # Performing Preprocessing
         obj3 = CleanData()
@@ -578,52 +561,8 @@ def crawler(request):
         cursor=conn.cursor()
         cursor.execute(sql)
         conn.commit()
-
-        Author = []
-        Title = []
-        datesss = []
-        category = []
-        content = []
-
-        dataset = pd.read_csv(
-            r'C:\Users\Sanau\PycharmProjects\FYP_Version_04\model_train\classification\categorize.txt',
-            names=['Author', 'Title', 'PubDate', 'content', 'Entertainment']
-            )
-        number = 0
-        for i in dataset.Entertainment:
-            if i == "Entertainment":
-                Author.append(dataset.Author[number])
-                Title.append(dataset.Title[number])
-                datesss.append(dataset.PubDate[number])
-                category.append(dataset.Entertainment[number])
-                content.append(dataset.content[number])
-
-            number += 1
-        number = 0
-        for i in dataset.Entertainment:
-            if i == "Politics":
-                Author.append(dataset.Author[number])
-                Title.append(dataset.Title[number])
-                datesss.append(dataset.PubDate[number])
-                category.append(dataset.Entertainment[number])
-                content.append(dataset.content[number])
-            number += 1
-        number = 0
-
-        for i in dataset['Entertainment']:
-            if i == "Sports":
-                Author.append(dataset['Author'][number])
-                Title.append(dataset['Title'][number])
-                datesss.append(dataset['PubDate'][number])
-                category.append(dataset['Entertainment'][number])
-                content.append(dataset['content'][number])
-            number += 1
-
-        print("Inserting Articles to database")
-        for t,a,d,c,cont in zip(Title,Author,datesss,category,content):
-            sql = "insert into article values ('" + t + "','" + a + "','"+d+"','" + c + "','" +cont + "')"
-            cursor=conn.cursor()
-            cursor.execute(sql)
+        obj=connection()
+        obj.insert_article_to_db()
         print("Creating Dataset")
         remove = "delete from article where name='Title'"
         cursor = conn.cursor()
